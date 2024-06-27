@@ -16,7 +16,7 @@ export class PokemonController {
         try {
             await pokemonService.getPokemon();
             pokemonService.getPokemonDetails()
-            console.log('🪤🦎');
+
         } catch (error) {
             Pop.error(error)
             console.error('FAILED TO CATCH THEM...🤔', error);
@@ -24,18 +24,29 @@ export class PokemonController {
 
     }
 
+    async getPokemonDetails(pokemonIndex) {
+        try {
+            console.log('🤪', pokemonIndex);
+            await pokemonService.getPokemonDetails(pokemonIndex);
+        } catch (error) {
+            Pop.error(error)
+            console.error('FAILED...🤔', error);
+        }
+    }
+
     drawPokemon() {
         const poky = AppState.activePokemon
         let innerHTMLString = ''
         poky.forEach((pokemon) => {
             innerHTMLString += `
-            <button onclick="app.PokemonController.drawPokemonDetails()" class="btn btn-outline-danger mt-2 d-block w-100">${pokemon.name}</button>`
+            <button onclick="app.PokemonController.getPokemonDetails('${pokemon.name}')" class="btn btn-outline-danger mt-2 d-block w-100">${pokemon.name}</button>`
         })
         setHTML('pokeyList', innerHTMLString)
     }
+    // drawPokemonDetails() {
+    //     const poky = AppState.activePokemon
+    //     setHTML('pokemonDetails', poky.)
+    // }
 
-    drawPokemonDetails() {
-        const pokemonDetails = AppState.activePokemon
-        setHTML('pokemonDetails', pokemonDetails)
-    }
+
 }

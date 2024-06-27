@@ -11,7 +11,7 @@ export const api = axios.create({
 
 // @ts-ignore
 export const pokemonApi = axios.create({
-  baseURL: 'https://pokeapi.co/api/v2/pokemon?limit=100',
+  baseURL: 'https://pokeapi.co/api/v2/pokemon?offset=2&limit=100',
   timeout: 4000
 
 })

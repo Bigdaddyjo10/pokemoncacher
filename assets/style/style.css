@@ -14,3 +14,7 @@
   height: 86vh;
   overflow-y: scroll;
 }
+
+#pokeyImg {
+  height: 20vh;
+}
